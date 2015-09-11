@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         Uri uri = null;
         try{
             // add <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> on androidManifest
-            //add image to res/drawable
+            //add image to src/main/res/drawable
             uri = Uri.parse(MediaStore.Images.Media.insertImage(this.getContentResolver(),
                     BitmapFactory.decodeResource(getResources(), R.drawable.cheech), null, null));
         }catch (NullPointerException e){
@@ -40,6 +40,24 @@ public class MainActivity extends Activity {
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
         sendIntent.setType("image/*");
+        startActivity(Intent.createChooser(sendIntent, "Share to..."));
+    }
+
+    public void shareImageText(View v){
+        Uri uri = null;
+        try{
+            // add <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> on androidManifest
+            //add image to src/main/res/drawable
+            uri = Uri.parse(MediaStore.Images.Media.insertImage(this.getContentResolver(),
+                    BitmapFactory.decodeResource(getResources(), R.drawable.cheechchong), null, null));
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Cheech and Chong!");
+        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        sendIntent.setType("*/*");
         startActivity(Intent.createChooser(sendIntent, "Share to..."));
     }
 }
