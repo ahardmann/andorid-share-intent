@@ -36,11 +36,11 @@ public class MainActivity extends Activity {
         }catch (NullPointerException e){
             e.printStackTrace();
         }
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        sendIntent.setType("image/*");
-        startActivity(Intent.createChooser(sendIntent, "Share to..."));
+        Intent sendImage = new Intent();
+        sendImage.setAction(Intent.ACTION_SEND);
+        sendImage.putExtra(Intent.EXTRA_STREAM, uri);
+        sendImage.setType("image/*");
+        startActivity(Intent.createChooser(sendImage, "Share to..."));
     }
 
     public void shareImageText(View v){
@@ -53,11 +53,11 @@ public class MainActivity extends Activity {
         }catch (NullPointerException e){
             e.printStackTrace();
         }
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Cheech and Chong!");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        sendIntent.setType("*/*");
-        startActivity(Intent.createChooser(sendIntent, "Share to..."));
+        Intent sendImageText = new Intent();
+        sendImageText.setAction(Intent.ACTION_SEND);
+        sendImageText.putExtra(Intent.EXTRA_TEXT, "Cheech and Chong!");
+        sendImageText.putExtra(Intent.EXTRA_STREAM, uri);
+        sendImageText.setType("*/*");
+        startActivity(Intent.createChooser(sendImageText, "Share to..."));
     }
 }
